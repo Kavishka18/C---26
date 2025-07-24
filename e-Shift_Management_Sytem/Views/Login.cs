@@ -18,6 +18,7 @@ namespace e_Shift_Management_Sytem.Views
 {
     public partial class Login: Form
     {
+        
         private LoginController controller;
 
         public Login()
