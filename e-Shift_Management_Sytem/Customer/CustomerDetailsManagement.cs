@@ -21,7 +21,7 @@ namespace e_Shift_Management_Sytem.Customer
             InitializeComponent();
         }
 
-        // Customer class to represent a customer object
+        // Customer class to represent a customer object 'this like container--> value store'
         public class Customer
         {
             public int CustomerID { get; set; }
