@@ -21,6 +21,7 @@ namespace e_Shift_Management_Sytem.Customer
             InitializeComponent();
         }
 
+        // Customer class to represent a customer object
         public class Customer
         {
             public int CustomerID { get; set; }
@@ -39,12 +40,13 @@ namespace e_Shift_Management_Sytem.Customer
             this.Hide();
         }
 
+        // Linear Search method for searching customers by name
         private DataTable LinearSearchCustomer(string searchQuery)
         {
-            // Step 1: Get all customers from the database
+            //Get all customers from the database
             DataTable data = DatabaseConnection.ExecuteQuery("SELECT * FROM Customers");
 
-            // Step 2: Convert DataTable to array of Customer objects
+            //Convert DataTable to array of Customer objects
             List<Customer> customers = new List<Customer>();
             foreach (DataRow row in data.Rows)
             {
@@ -59,10 +61,10 @@ namespace e_Shift_Management_Sytem.Customer
                 });
             }
 
-            // Step 3: Create a new DataTable for search results
+            //Create a new DataTable for search results
             DataTable searchResults = data.Clone(); // Create a new empty DataTable with the same schema
 
-            // Step 4: Linear search on the array of customers
+            //Linear search on the array of customers
             foreach (var customer in customers)
             {
                 if (customer.CustomerName.ToLower().Contains(searchQuery.ToLower())) // Case-insensitive search for matching CustomerName
@@ -79,7 +81,7 @@ namespace e_Shift_Management_Sytem.Customer
                 }
             }
 
-            return searchResults;
+            return searchResults;  // Return the filtered results
 
         }
 
@@ -203,20 +205,24 @@ namespace e_Shift_Management_Sytem.Customer
             }
         }
 
+        // Search for customers by name
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
             try
             {
                 string searchQuery = txtSearchCustomerName.Text.Trim(); // User input
 
+                // Check if the search term is empty
                 if (string.IsNullOrEmpty(searchQuery))
                 {
                     MessageBox.Show("Please enter a search term.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                // Perform linear search to find matching customers
                 DataTable result = LinearSearchCustomer(searchQuery);
 
+                // Display the search results in the DataGridView
                 if (result.Rows.Count > 0)
                 {
                     dataGridViewCustomers.DataSource = result; // Display search results
