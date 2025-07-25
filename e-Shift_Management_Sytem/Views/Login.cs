@@ -11,7 +11,7 @@ using e_Shift_Management_Sytem.DB;
 using e_Shift_Management_Sytem.Admin;
 using e_Shift_Management_Sytem.Customer;
 using System.Data.SqlClient;
-using e_Shift_Management_Sytem.Controllers;
+using e_Shift_Management_Sytem.Controllers;  // Controller reference
 
 
 namespace e_Shift_Management_Sytem.Views
@@ -19,17 +19,19 @@ namespace e_Shift_Management_Sytem.Views
     public partial class Login: Form
     {
         
-        private LoginController controller;
+        private LoginController controller;   // Reference to the controller
 
+        // Constructor initializes the controller
         public Login()
         {
             InitializeComponent();
-            controller = new LoginController(this);
+            controller = new LoginController(this); // Pass the view to the controller
         }
-       
 
+        // Event handler for the login button click event
         private void btn_login_Click(object sender, EventArgs e)
         {
+            // Call the controller method to authenticate the user
             controller.LoginButtonClicked(text_userid.Text.Trim(), text_password.Text.Trim());
         }
 
@@ -45,7 +47,7 @@ namespace e_Shift_Management_Sytem.Views
         {
             bool showPasswords = checkBox_ShowPassword.Checked;
 
-            text_password.UseSystemPasswordChar = !showPasswords;
+            text_password.UseSystemPasswordChar = !showPasswords;   // Toggle password visibility
         }
     }
 }

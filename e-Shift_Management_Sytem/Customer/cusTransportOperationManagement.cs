@@ -23,6 +23,7 @@ namespace e_Shift_Management_Sytem.Customer
           
         }
 
+        // Google Maps API key for calculating distances
         private static string apiKey = "AIzaSyAjrH9dZQq0VJ-NhstQ8OBhLCFaJdkBtlI";
 
         // Method to calculate distance between start and end location using Google Maps API

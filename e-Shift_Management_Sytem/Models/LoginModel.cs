@@ -8,11 +8,13 @@ namespace e_Shift_Management_Sytem.Models
 {
     public class LoginModel
     {
+        // Method that authenticates the user by checking the user credentials in the database
         public static bool AuthenticateUser(string userId, string password, out string userType)
         {
-            userType = string.Empty;
+            userType = string.Empty;  // Initialize userType as empty
             try
             {
+                // SQL query to check the user credentials
                 string query = "SELECT * FROM loginUser WHERE userId = @userId AND password = @password";
 
                 // Define parameters
@@ -28,7 +30,7 @@ namespace e_Shift_Management_Sytem.Models
                 if (dataTable.Rows.Count == 1)
                 {
                     userType = dataTable.Rows[0][2].ToString();  // Assuming the userType is in the third column (index 2)
-                    return true;
+                    return true;  // Return true indicating successful authentication
                 }
                 return false;
             }
