@@ -272,10 +272,6 @@ namespace e_Shift_Management_Sytem.Customer
             dateTimePickerTransportDate.Value = DateTime.Now; // Reset to current date
         }
 
-        //// Global variables to store user information (admin check)
-        //public static int currentUserId; // To store userId of logged-in user
-        //public static string currentUserType; // To store userType (Admin/User)
-
 
         private void Return_Click(object sender, EventArgs e)
         {
